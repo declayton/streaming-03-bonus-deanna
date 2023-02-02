@@ -34,14 +34,14 @@ import csv
 # open a file to write some data
 # create a csv writer for our comma delimited data
 output_file = open("output.csv", "w")
-writer = csv.writer(output_file, delimiter = " ")
+writer = csv.writer(output_file, delimiter = ",")
 
 # define a callback function to be called when a message is received
 def process_message(ch, method, properties, body):
     """ Define behavior on getting a message."""
     print(" [x] Received %r" % body.decode())
     # write the strings to the output file
-    writer.writerow(body.decode())
+    writer.writerow([body.decode()])
 
 # define a main function to run the program
 def main(hn: str = "localhost"):
